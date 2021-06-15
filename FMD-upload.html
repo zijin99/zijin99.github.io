@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh en">
+<html lang="en">
 
 	<head>
 		<title>Upload Image</title>
@@ -32,9 +32,10 @@
             float: left;
             background-color: #C8C6C7;
             margin-top: 10%;
+            margin-left: 5%;
             border-style:solid;
             border-width: thick;
-            max-width: 75%;
+            max-width: 250px;
             max-height: auto;
             overflow-y: auto;
         }
@@ -45,9 +46,9 @@
             margin-top: 10%;
             border-style:solid;
             border-width: thick;
-            max-width: 75%;
-            max-height: auto;
-            overflow-y: auto;
+            max-width: 200px;
+            max-height: 200px;
+            margin-right: 5%;
         }
 
         .previewimg{
@@ -55,6 +56,11 @@
             border-width: medium;
             max-height: 200px;
             max-width: 200px;
+        }
+        .preview2 video {
+            width: 100%;
+            margin-top: 10px;
+            background-color: #999;
         }
 
         .header1 {
@@ -72,7 +78,21 @@
 
 
     <body>
-        <h1 class="header1">Face Mask Detection Upload</h1>   
+        <h1 class="header1">Face Mask Detection Upload</h1>
+
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown" >
+            <button type="button" class="btn btn-secondary" onclick = "logout()" style="color: black; background-color: red;">Logout</button>
+          
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+              </div>
+            </div>
+        </div>
         <div class="divupload"> 
         <form action="" id="uploadfile">
             <div class = "divupload" >
@@ -85,21 +105,20 @@
 
             <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickphoto()">Choose Your Image </div>
 
-            <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickvideo()">Choose Your video </div>
+           <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickvideo()">Choose Your video </div>
 
             <div class="btn btn-success divupload" id="uploadfile"> Upload </div>
 
             <div class="preview1" id="previewbox1">
             </div>
 
-            <div class="preview2" id="previewbox2">
+            <div class="preview2 previewv" id="previewbox2">
+                
             </div>
         </div>
         
         </form>
 
-        
-            
     </body>
 
     <script>
@@ -111,8 +130,7 @@
             $("#realvideoupload").trigger("click");
         }
 
-        var i,x = 0;
-        var j,y = 1;
+        var i = 0, j= 1;
         document.getElementById("realphotoupload").addEventListener("change", function(){	
 			for(i;i <this.files.length;i++){
 				document.getElementById("previewbox1").innerHTML += '<div><img id="img'+i+'" class = "previewimg"/> <p><b>image '+j+'</b></p> </div>';
@@ -120,16 +138,19 @@
                 j++;
 			}
 		});
-
-        document.getElementById("realvideoupload").addEventListener("change", function(){	
-			for(x;x <this.files.length;x++){
-				document.getElementById("previewbox2").innerHTML += '<div><video id="img'+i+'" class = "previewimg"/> <p><b>video '+y+'</b></p> </div>';
-				document.getElementById("img"+i).src = window.URL.createObjectURL(this.files[i]);
-                y++;
-			}
-		});
-
         
+        document.getElementById("realvideoupload").addEventListener("change",
+        function(){
+                var leng = this.files.length;
+				url = URL.createObjectURL(new Blob([this.files[0]]));
+                var videourl = $('<video controls src="' + url + '">');
+                $('.previewv').html('').append(videourl[0]);
+                document.getElementById("previewbox2").innerHTML += '<p>Totally <b> '+leng+' videos </b></p></div>';
+        });
+        
+        function logout(){
+            window.location.href = 'FMD-main.html';
+        }
 
     </script>
         
