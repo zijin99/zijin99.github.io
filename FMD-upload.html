@@ -143,8 +143,7 @@
         function(){
                 var leng = this.files.length;
 				url = URL.createObjectURL(new Blob([this.files[0]]));
-                var videourl = $('<video controls src="' + url + '">');
-                $('.previewv').html('').append(videourl[0]);
+                $('.previewv').html('').append($('<video controls src="' + url + '">'));
                 document.getElementById("previewbox2").innerHTML += '<p>Totally <b> '+leng+' videos </b></p></div>';
         });
         
