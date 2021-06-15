@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh en">
+
+	<head>
+		<title>Upload Image</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+    <style>
+		body{
+			background-image:url('https://github.com/zijin99/zijin99.github.io/blob/main/BGI-2.jpg?raw=true');
+			font-family: 'Times New Roman', Times, serif;
+			/*background-image: linear-gradient(45DEG,#93278F,#00a99d);*/
+			background-position: center;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover; 
+			-webkit-background-size: cover;
+			-o-background-size: cover;
+			-moz-background-size: cover;
+			-ms-background-size: cover;
+		}
+
+        .divupload {
+           text-align: center;
+           margin-top: 5%;
+        }
+
+        .preview1{
+            float: left;
+            background-color: #C8C6C7;
+            margin-top: 10%;
+            border-style:solid;
+            border-width: thick;
+            max-width: 75%;
+            max-height: auto;
+            overflow-y: auto;
+        }
+
+        .preview2{
+            float: right;
+            background-color: #C8C6C7;
+            margin-top: 10%;
+            border-style:solid;
+            border-width: thick;
+            max-width: 75%;
+            max-height: auto;
+            overflow-y: auto;
+        }
+
+        .previewimg{
+            border-style: double;
+            border-width: medium;
+            max-height: 200px;
+            max-width: 200px;
+        }
+
+        .header1 {
+            background-image: linear-gradient(#93278F,#00a99d);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            position: relative;
+            left: 30px;
+        }
+
+
+
+	</style>
+
+
+    <body>
+        <h1 class="header1">Face Mask Detection Upload</h1>   
+        <div class="divupload"> 
+        <form action="" id="uploadfile">
+            <div class = "divupload" >
+                <input type="file" accept="image/*" multiple ="multiple" style="display: none;" id = "realphotoupload"/>
+            </div>
+
+            <div class = "divupload" >
+                <input type="file" accept="video/*" multiple ="multiple" style="display: none;" id = "realvideoupload"/>
+            </div>
+
+            <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickphoto()">Choose Your Image </div>
+
+            <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickvideo()">Choose Your video </div>
+
+            <div class="btn btn-success divupload" id="uploadfile"> Upload </div>
+
+            <div class="preview1" id="previewbox1">
+            </div>
+
+            <div class="preview2" id="previewbox2">
+            </div>
+        </div>
+        
+        </form>
+
+        
+            
+    </body>
+
+    <script>
+        function realclickphoto(){
+            $("#realphotoupload").trigger("click");
+        }
+
+        function realclickvideo(){
+            $("#realvideoupload").trigger("click");
+        }
+
+        var i,x = 0;
+        var j,y = 1;
+        document.getElementById("realphotoupload").addEventListener("change", function(){	
+			for(i;i <this.files.length;i++){
+				document.getElementById("previewbox1").innerHTML += '<div><img id="img'+i+'" class = "previewimg"/> <p><b>image '+j+'</b></p> </div>';
+				document.getElementById("img"+i).src = window.URL.createObjectURL(this.files[i]);
+                j++;
+			}
+		});
+
+        document.getElementById("realvideoupload").addEventListener("change", function(){	
+			for(x;x <this.files.length;x++){
+				document.getElementById("previewbox2").innerHTML += '<div><video id="img'+i+'" class = "previewimg"/> <p><b>video '+y+'</b></p> </div>';
+				document.getElementById("img"+i).src = window.URL.createObjectURL(this.files[i]);
+                y++;
+			}
+		});
+
+        
+
+    </script>
+        
+</html>
