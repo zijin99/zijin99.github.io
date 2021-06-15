@@ -11,35 +11,66 @@
 
 	<body>
 		<!-- Login -->
-		<div class="login-form">
-			<center>
+		<div class="login-form" >
+			<center class="divbackground">
+			<h1 class="header1">Face Mask Detection</h1>
 			<p class="emphasis"><b>Admin Login</b></p>
-			</center>	
-				<div class="form-group">
-					<p>User Name:</p>
-					<input type="text" class="form-control" id="uninput" placeholder="User Name">
-				</div>
-				<div class="form-group">
-					<p>Password:</p>
-					<input type="password" class="form-control" id="pwdinput" placeholder="Password">
-				</div>
-				<div class="c3-2">
-					<center>
-						<button id="login" class="btn btn-primary">Login</button>
-					</center>
-					<br />
-				</div>
-			
+			</center>
+			<form action="FMD-upload.html"> 
+				<table class="table table-hover" style="text-align: center">
+					<tr>
+						<td>	
+							<div class="form-group">
+							<label><b>User Name:</b></label>
+							<input type="text" class="form-control" id="uninput" placeholder="Email Address" autocomplete="off" >
+							</div>
+						</td>	
+					</tr>
+					<tr>
+					<td>
+					<div class="form-group">
+						<label><b>Password:</b></label>
+						<input type="password" class="form-control" id="pwdinput" placeholder="Password">
+					</div>
+					</td>	
+					</tr>
+					<tr>
+					<td>
+					<div class="c3-2">
+						<center>
+							<input type="submit" id = "realsub" onclick="checkuser()" style="display: none;"/>
+							<div class="btn btn-primary" onclick="realclick()">Sign In</div>
+						</center>
+						<br />
+					</div>
+					</td>	
+					</tr>
+				</table>
+			</form>
 		</div>
-	
-		
 	</body>
+
+	<script type="text/javascript"> 
+		function checkuser() { 
+			if(document.getElementById('uninput').value == "123" && document.getElementById('pwdinput').value == "123") { 
+				return true;
+			}else { 
+				alert("Wrong User Name or Invaild Password！")
+				return false;
+			}
+		}
+		
+		function realclick(){
+			$("#realsub").trigger("click");
+		}
+	</script> 
+
 	<style>
 		body{
-			background-image:url('https://github.com/zijin99/zijin99.github.io/blob/main/BGI-2.jpg?raw=true');
+			background:url('https://github.com/zijin99/zijin99.github.io/blob/main/BGI-2.jpg?raw=true');
 			font-family: 'Times New Roman', Times, serif;
 			/*background-image: linear-gradient(45DEG,#93278F,#00a99d);*/
-			background-position: p;
+			background-position: center;
 			background-repeat: no-repeat;
 			background-attachment: fixed;
 			background-size: cover; 
@@ -47,6 +78,7 @@
 			-o-background-size: cover;
 			-moz-background-size: cover;
 			-ms-background-size: cover;
+			
 		}
 		
 		.emphasis{
@@ -59,6 +91,17 @@
 			margin-top: 15%;
 			position: relative;
 			left: 30px;
+		}
+
+		.header1 {
+			background-image: linear-gradient(#93278F,#00a99d);
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+			position: relative;
+		}
+		.divbackground{
+			background-color: #C8C6C7;
 		}
 	</style>
 </html>
