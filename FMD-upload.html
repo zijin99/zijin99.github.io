@@ -18,15 +18,22 @@
 			background-attachment: fixed;
 			background-size: cover; 
 			-webkit-background-size: cover;
-			-o-background-size: cover;
+			-o-background-size: cover;a
 			-moz-background-size: cover;
 			-ms-background-size: cover;
 		}
 
         .divupload {
-           text-align: center;
-           margin-top: 5%;
+            text-align: center;
+            margin-top: 5%;
         }
+
+        .divupload1:hover {
+            text-align: center;
+            margin-top: 4%;
+        
+        }
+
 
         .preview1{
             float: left;
@@ -104,20 +111,20 @@
                 <input type="file" accept="video/*" multiple ="multiple" style="display: none;" id = "realvideoupload"/>
             </div>
 
-            <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickphoto()">
+            <div class="btn btn-primary divupload divupload1" id="fakeupload" onclick="realclickphoto()">
                 <label for="name" >
                  Choose Your Image    
                 </label>
                 
             </div>
 
-           <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickvideo()">
+           <div class="btn btn-primary divupload divupload1" id="fakeupload" onclick="realclickvideo()">
             <label for="name" >
                 Choose Your video   
             </label>
             </div>
 
-            <div class="btn btn-primary btn-success divupload" id="uploadfile">
+            <div class="btn btn-primary btn-success divupload divupload1" id="uploadfile">
                 <label for="name" >
                 Upload file(s)   
                 </label>
