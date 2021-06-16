@@ -72,10 +72,9 @@
             left: 30px;
         }
 
-        .btncenter{
-
+        .dropdownbtn{
+            margin-left: 5%;
         }
-
 
 	</style>
 
@@ -83,17 +82,16 @@
     <body>
         <h1 class="header1">Face Mask Detection Upload</h1>
 
-        <div class="btn-group" role="group" aria-label="Button group with nested dropdown" >
-            <button type="button" class="btn btn-secondary" onclick = "logout()" style="color: black; background-color: red;">Logout</button>
+        <div class="btn-group dropdownbtn" role="group" aria-label="Button group with   nested dropdown" >
+            <button type="button" class="btn btn-secondary btn-danger" onclick = "logout()" >Logout</button>
           
             <div class="btn-group" role="group">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Result
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
+                <button class="btn btn-info but-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Result<span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu">
                 <li><a href="FMD-Table.html">Table</a></li>
                 <li><a href="FMD-Video.html">Video</a></li>
                 </ul>
-            
             </div>
         </div>
         <div class="divupload"> 
@@ -106,11 +104,24 @@
                 <input type="file" accept="video/*" multiple ="multiple" style="display: none;" id = "realvideoupload"/>
             </div>
 
-            <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickphoto()">Choose Your Image </div>
+            <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickphoto()">
+                <label for="name" >
+                 Choose Your Image    
+                </label>
+                
+            </div>
 
-           <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickvideo()">Choose Your video </div>
+           <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickvideo()">
+            <label for="name" >
+                Choose Your video   
+            </label>
+            </div>
 
-            <div class="btn btn-success divupload" id="uploadfile"> Upload </div>
+            <div class="btn btn-primary btn-success divupload" id="uploadfile">
+                <label for="name" >
+                Upload file(s)   
+                </label>
+            </div>
 
             <div class="preview1" id="previewbox1">
             </div>
@@ -146,6 +157,7 @@
         function(){
                 var leng = this.files.length;
 				url = URL.createObjectURL(new Blob([this.files[0]]));
+                //To handle video preview
                 $('.previewv').html('').append($('<video controls src="' + url + '">'));
                 document.getElementById("previewbox2").innerHTML += '<p>Totally <b> '+leng+' videos </b></p></div>';
         });
