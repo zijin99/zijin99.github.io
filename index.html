@@ -61,7 +61,7 @@ p1{
 </tr>
 <tr>
     <td>
-        <a href="https://htmlpreview.github.io/?https://github.com/zijin99/zijin99.github.io/blob/734cdde83bda5ea3534a9b503d9a81540379deda/FMD-login.html">
+        <a href="./FMD-login.html">
         <input class="input1", type="submit", name =submit, value ="Login"/>
         </a>
     </td>
@@ -95,17 +95,24 @@ p1{
                 <b><h3 class="modal-title" id="LabelRg">Sign Up</h3></b>
             </div>
             <div class="modal-body">
-                <form class="signupform" role="form" action = "" method="POST">
-                <label>User Name:</label>
-                <input class="form-control" placeholder="Email Address" />
-                <br /> 
-                <br />
-                <label>Password:</label><input class="form-control" placeholder="Password" />
-                <br /> 
+                <form class="form-horizontal" role="form" action="FMD-login.html">
+                    <div class="form-group">
+                      <label for="Email" class="col-sm-2 control-label">User ID:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="unsignup" placeholder="Email Address" required pattern="^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="password" class="col-sm-2 control-label">Password:</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="pwdsignup" placeholder="Enter Your Password">
+                      </div>
+                    </div>
+                
             </div>
             <div class="modal-footer">
                 <center>
-                 <input type="submit" class="btn btn-primary mr-auto" value="Sign Up"/>
+                 <input type="submit" class="btn btn-primary mr-auto" value="Sign Up" />
                 </form>
                  <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cancal </button>
                 </center>
@@ -113,6 +120,7 @@ p1{
         </div>
     </div>
     </center>
+    
 </div>
 
 <script>
