@@ -1,73 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 	<head>
-		<title>Login</title>
-		<!--  jquery、Bootstrap-->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<title>Upload Image</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 
-	<body>
-		<!-- Login -->
-		<div class="login-form" >
-			<center class="divbackground">
-			<h1 class="header1">Face Mask Detection</h1>
-			<p class="emphasis"><b>Admin Login</b></p>
-			</center>
-			<form action="FMD-upload.html"> 
-				<table class="table table-hover" style="text-align: center">
-					<tr>
-						<td>	
-							<div class="form-group">
-							<label><b>User Name:</b></label>
-							<input type="text" class="form-control" id="uninput" placeholder="Email Address" autocomplete="off" >
-							</div>
-						</td>	
-					</tr>
-					<tr>
-					<td>
-					<div class="form-group">
-						<label><b>Password:</b></label>
-						<input type="password" class="form-control" id="pwdinput" placeholder="Password">
-					</div>
-					</td>	
-					</tr>
-					<tr>
-					<td>
-					<div class="c3-2">
-						<center>
-							<input type="submit" id = "realsub" onclick="checkuser()" style="display: none;"/>
-							<div class="btn btn-primary" onclick="realclick()">Sign In</div>
-						</center>
-						<br />
-					</div>
-					</td>	
-					</tr>
-				</table>
-			</form>
-		</div>
-	</body>
-
-	<script type="text/javascript"> 
-		function checkuser() { 
-			if(document.getElementById('uninput').value == "123" && document.getElementById('pwdinput').value == "123") { 
-				return true;
-			}else { 
-				alert("Wrong User Name or Invaild Password！")
-				return false;
-			}
-		}
-		
-		function realclick(){
-			$("#realsub").trigger("click");
-		}
-	</script> 
-
-	<style>
+    <style>
 		body{
-			background:url('https://github.com/zijin99/zijin99.github.io/blob/main/BGI-2.jpg?raw=true');
+			background-image:url('https://github.com/zijin99/zijin99.github.io/blob/main/BGI-2.jpg?raw=true');
 			font-family: 'Times New Roman', Times, serif;
 			/*background-image: linear-gradient(45DEG,#93278F,#00a99d);*/
 			background-position: center;
@@ -78,30 +21,151 @@
 			-o-background-size: cover;
 			-moz-background-size: cover;
 			-ms-background-size: cover;
-			
-		}
-		
-		.emphasis{
-			font-size: 30px;
-		}
-		
-		.login-form {
-			width: 20%;
-			margin: auto;
-			margin-top: 15%;
-			position: relative;
-			left: 30px;
 		}
 
-		.header1 {
-			background-image: linear-gradient(#93278F,#00a99d);
-			background-clip: text;
-			-webkit-background-clip: text;
-			color: transparent;
-			position: relative;
-		}
-		.divbackground{
-			background-color: #C8C6C7;
-		}
+        .divupload {
+           text-align: center;
+           margin-top: 5%;
+        }
+
+        .preview1{
+            float: left;
+            background-color: #C8C6C7;
+            margin-top: 10%;
+            margin-left: 5%;
+            border-style:solid;
+            border-width: thick;
+            max-width: 250px;
+            max-height: auto;
+            overflow-y: auto;
+        }
+
+        .preview2{
+            float: right;
+            background-color: #C8C6C7;
+            margin-top: 10%;
+            border-style:solid;
+            border-width: thick;
+            max-width: 200px;
+            max-height: 200px;
+            margin-right: 5%;
+        }
+
+        .previewimg{
+            border-style: double;
+            border-width: medium;
+            max-height: 200px;
+            max-width: 200px;
+        }
+        .preview2 video {
+            width: 100%;
+            margin-top: 10px;
+            background-color: #999;
+        }
+
+        .header1 {
+            background-image: linear-gradient(#93278F,#00a99d);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            position: relative;
+            left: 30px;
+        }
+
+        .dropdownbtn{
+            margin-left: 5%;
+        }
+
 	</style>
+
+
+    <body>
+        <h1 class="header1">Face Mask Detection Upload</h1>
+
+        <div class="btn-group dropdownbtn" role="group" aria-label="Button group with   nested dropdown" >
+            <button type="button" class="btn btn-secondary btn-danger" onclick = "logout()" >Logout</button>
+          
+            <div class="btn-group" role="group">
+                <button class="btn btn-info but-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Result<span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu">
+                <li><a href="FMD-Table.html">Table</a></li>
+                <li><a href="FMD-Video.html">Video</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="divupload"> 
+        <form action="" id="uploadfile">
+            <div class = "divupload" >
+                <input type="file" accept="image/*" multiple ="multiple" style="display: none;" id = "realphotoupload"/>
+            </div>
+
+            <div class = "divupload" >
+                <input type="file" accept="video/*" multiple ="multiple" style="display: none;" id = "realvideoupload"/>
+            </div>
+
+            <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickphoto()">
+                <label for="name" >
+                 Choose Your Image    
+                </label>
+                
+            </div>
+
+           <div class="btn btn-primary divupload" id="fakeupload" onclick="realclickvideo()">
+            <label for="name" >
+                Choose Your video   
+            </label>
+            </div>
+
+            <div class="btn btn-primary btn-success divupload" id="uploadfile">
+                <label for="name" >
+                Upload file(s)   
+                </label>
+            </div>
+
+            <div class="preview1" id="previewbox1">
+            </div>
+
+            <div class="preview2 previewv" id="previewbox2">
+                
+            </div>
+        </div>
+        
+        </form>
+
+    </body>
+
+    <script>
+        function realclickphoto(){
+            $("#realphotoupload").trigger("click");
+        }
+
+        function realclickvideo(){
+            $("#realvideoupload").trigger("click");
+        }
+
+        var i = 0, j= 1;
+        document.getElementById("realphotoupload").addEventListener("change", function(){	
+			for(i;i <this.files.length;i++){
+				document.getElementById("previewbox1").innerHTML += '<div><img id="img'+i+'" class = "previewimg"/> <p><b>image '+j+'</b></p> </div>';
+				document.getElementById("img"+i).src = window.URL.createObjectURL(this.files[i]);
+                j++;
+			}
+		});
+        
+        document.getElementById("realvideoupload").addEventListener("change",
+        function(){
+                var leng = this.files.length;
+				url = URL.createObjectURL(new Blob([this.files[0]]));
+                //To handle video preview
+                $('.previewv').html('').append($('<video controls src="' + url + '">'));
+                document.getElementById("previewbox2").innerHTML += '<p>Totally <b> '+leng+' videos </b></p></div>';
+        });
+        
+        function logout(){
+            window.location.href = 'FMD-main.html';// = index.html in github
+        }
+
+    </script>
+        
 </html>
